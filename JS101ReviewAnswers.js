@@ -299,6 +299,7 @@
 // #25
 // Given the following data structure, sort the array so that the sub-arrays are ordered
 // based on the sum of the odd numbers they contain
+// let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
 // ANSWER
 // // let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
 // // arr.sort((a,b) => {
@@ -309,3 +310,106 @@
 // //   return oddA - oddB
 // // })
 // // console.log(arr)
+
+// #26
+// Given the following data structure write some code to return an array containig the colors
+// of the fruits and the sizes of the vegetables.  The sizes should be uppercase, and the colors
+// should be capitalized
+// let obj = {
+//   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+//   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+//   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+//   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+//   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// };
+// return should look like this: [["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+// ANSWER
+// // let obj = {
+// //   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+// //   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+// //   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+// //   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+// //   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// // };
+// // produceArray = []
+// // for (produceItem in obj) {
+// //   if (obj[produceItem].type === 'fruit') {
+// //     produceArray.push(obj[produceItem].colors)
+// //   }
+// //   else {
+// //     produceArray.push(obj[produceItem].size.toUpperCase())
+// //   }
+// // }
+// // console.log(produceArray)
+
+// #27
+// Given the following data structure, write some code to return an array which contains only the objects
+// where all the numbers are even
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
+// ANSWER
+// // let newArr = arr.filter(obj => {
+// //   return Object.values(obj).every(subArray => {
+// //     return subArray.every(number => number % 2 === 0)
+// //   })
+// // })
+
+// #28
+// Given the following data structure, write some code that returns an object where the key is the
+// first item in each subarray, and the value is the second
+// let arr = [['a', 1], ['b', 'two'], ['sea', {'c': 3}], ['D', ['a', 'b', 'c']]];
+// expected return value of function call
+// { a: 1, b: 'two', sea: { c: 3 }, D: [ 'a', 'b', 'c' ] }
+// ANSWER
+// // let newObj = {}
+// // arr.forEach(element => {
+// //   return newObj[element[0]] = element[1]
+// // })
+// // console.log(newObj)
+
+// #29
+// write a function that creates a UUID
+// its a 32 character code (mix of 0-9 & a-f) 5 sections: 8-4-4-4-12
+// ANSWER
+// function UUID() {
+//   valueUUID = "-------- ---- ---- ---- ------------"
+//   let alphaNumero = ['a','b','c','d','e','f',0,1,2,3,4,5,6,7,8,9]
+//   let newUUID = valueUUID.split('').map(element => element.replace('-', alphaNumero[Math.floor(Math.random()*alphaNumero.length)]))
+//   console.log(newUUID.join('').replace(/ /g,'-'))
+
+//   return valueUUID
+// }
+// UUID()
+
+// #30
+// write a function that takes a positive integer as an arugment, and returns that number with its digits reversed
+// reverseNumber(12345);    // 54321
+// reverseNumber(12213);    // 31221
+// reverseNumber(456);      // 654
+// reverseNumber(12000);    // 21 -- Note that leading zeros in the result get dropped!
+// reverseNumber(1);        // 1
+// ANSWER
+// // function reverseNumber(number) {
+// //   let reversed = number.toString().split('').reverse().join('')
+// //   console.log(parseInt(reversed, 10))
+// // }
+  // while (reversed[0] === '0') {
+  //   newr = reversed.shift()
+  // }
+  // console.log(reversed.join(''))
+  // }
+
+  //# 31
+  // write a function that takes a string argument, and returns a new string containing the words from the string argument
+// in reverse order
+// reverseSentence('');                       // ""
+// reverseSentence('Hello World');            // "World Hello"
+// reverseSentence('Reverse these words');    // "words these Reverse"
+// ANSWER
+// // function reverseSentence(string) {
+// //   console.log(string.split(' ').reverse().join(' '))
+// // }
+
