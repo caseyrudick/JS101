@@ -402,8 +402,8 @@
   // console.log(reversed.join(''))
   // }
 
-  //# 31
-  // write a function that takes a string argument, and returns a new string containing the words from the string argument
+// #31
+// write a function that takes a string argument, and returns a new string containing the words from the string argument
 // in reverse order
 // reverseSentence('');                       // ""
 // reverseSentence('Hello World');            // "World Hello"
@@ -413,3 +413,601 @@
 // //   console.log(string.split(' ').reverse().join(' '))
 // // }
 
+// #32
+// write a function that takes one argument, a positive integer, 
+// and returns the sum of its digits. Do this using list processing techniques.
+// sum(23);           // 5
+// sum(496);          // 19
+// sum(123456789);    // 45
+// ANSWER
+// // function sum(number) {
+// //   result = String(number).split('').reduce((summation, element) => {
+// //     return summation += Number(element)
+// //   },0)
+// //   console.log(result)
+// // }
+
+// #33
+// Write a function that takes an array of integers between 0 and 19, 
+// and returns an array of those integers sorted based on the English 
+// word for each number:
+// let NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
+//                     'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+//                     'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+// ANSWER
+// function alphabeticNumberSort(arr) {
+//   arr.sort((num1, num2) => {
+//     if (NUMBER_WORDS[num1] > NUMBER_WORDS[num2]) {
+//       return 1
+//     } else if (NUMBER_WORDS[num2] > NUMBER_WORDS[num1]) {
+//       return -1
+//     }
+//     else {
+//       return 0
+//     }
+//   })
+//   console.log(arr)
+//   return arr
+// }
+
+// let AlphaNumbers = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 
+//   5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', 11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', 15: 'fifteen',
+//    16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen'}
+// function alphabeticNumberSort(arr) {
+//   arr.sort((a, b) => {
+//     if(AlphaNumbers[a] > AlphaNumbers[b]) {
+//       return 1
+//     } else if (AlphaNumbers[a] > AlphaNumbers[b]) {
+//       return -1
+//     }
+//     else {
+//       return 0
+//     }
+//   })
+//   return arr
+// }
+
+
+// console.log(alphabeticNumberSort(
+//   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]));
+
+// let englishNum = [
+//   'zero',
+//   'one',
+//   'two',
+//   'three',
+//   'four',
+//   'five',
+//   'six',
+//   'seven',
+//   'eight',
+//   'nine',
+//   'ten',
+//   'eleven',
+//   'twelve',
+//   'thirteen',
+//   'fourteen',
+//   'fifteen',
+//   'sixteen',
+//   'seventeen',
+//   'eighteen',
+//   'nineteen'
+// ]
+// function alphabeticNumberSort(arr) {
+//   let sorted = arr.map(element => englishNum[element]).sort().map(element => englishNum.indexOf(element))
+//   console.log(sorted)
+// }
+
+// #34
+// write a function that takes two arguments, each containing a list of numbers, and returns a new array 
+// containing the products of all combinations of number pairs that exist between the two arrays.
+// The returned array should be sorted in ascending numerical order
+// Example:
+// multiplyAllPairs([2, 4], [4, 3, 1, 2]);    // [2, 4, 4, 6, 8, 8, 12, 16]
+// ANSWER
+// // function multiplyAllPairs(arr1, arr2) {
+// //   newarr = []
+// //   for (let index = 0; index < arr1.length; index++) {
+// //     for(let jIndex = 0; jIndex < arr2.length; jIndex++) {
+// //       let result = arr1[index]*arr2[jIndex]
+// //         newarr.push(result)
+// //     };
+// //   }
+// //   console.log(sortNumeros(newarr))
+// // };
+// // function sortNumeros(arr) {
+// //   arr.sort((a,b) => {
+// //     return a - b
+// //   })
+// //   return arr
+// // }
+// // sortNumeros([ 8, 6, 2, 4, 16, 12 ])
+// // multiplyAllPairs([2, 4], [4, 3, 1, 2]);    // [2, 4, 4, 6, 8, 8, 12, 16]
+
+// #35
+// write a function that takes a string argument and returns a list of all substrings 
+// that start from the beginning of the string, ordered from shortest to longest
+// substringsAtStart('abc');      // ["a", "ab", "abc"]
+// substringsAtStart('a');        // ["a"]
+// substringsAtStart('xyzzy');    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+// ANSWER
+// //  function substrings(string) {
+// //   let result = string.split('').map((_,idx) => {
+// //     return string.slice(0,index +1)
+// //   })
+// //   console.log(result)
+// // }
+
+// #36
+// write a function that returns all the possible substrings in a string
+// substringer('apple') // => ['ap','app','appl','apple','pp','ppl','pple','pl','ple','le']
+// ANSWER
+// // function substringsAtStart(string) {
+// //   let result = []
+// //   let startSubIndex = 0
+// //   let endSubIndex = startSubIndex + 2
+// //   while (startSubIndex < string.length-1) {
+// //     while (endSubIndex <= string.length) {
+// //       result.push(string.substring(startSubIndex, endSubIndex))
+// //       endSubIndex += 1
+// //     }
+// //     startSubIndex += 1
+// //     endSubIndex = startSubIndex + 2
+// //   }
+// //   console.log(result)
+// // }
+// // substringsAtStart('abc');      // ["a", "ab", "abc"]
+// // substringsAtStart('a');        // ["a"]
+// // substringsAtStart('xyzzy');    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+
+// #37
+// write a program that makes a list of lists.  Each subarray is a list of 
+// the substrings, starting at += 1 index spot.  
+// ex. substringArrays('abcde') => 
+// [ 'a', 'ab', 'abc', 'abcd', 'abcde' ]
+// [ 'b', 'bc', 'bcd', 'bcde' ]
+// [ 'c', 'cd', 'cde' ]
+// [ 'd', 'de' ]
+// [ 'e' ]
+// ANSWER
+// // function substringArrays (string) {
+// //   let result = []
+// //   for (idx = 0; idx < string.length; idx ++) {
+// //     result.push(substrings(string.slice(idx)))
+// //   }
+// // }
+// //  function substrings(string) {
+// //   let result = string.split('').map((_,idx) => {
+// //     return string.slice(0,idx+1)
+// //   })
+// //   console.log(result)
+// //  }
+// //  substringArrays('abcde')
+// // OR
+// // function substringArrays(string) {
+// //   let results = [];
+// //   for (let idx = 0; idx <= string.length; idx++) {
+// //     let longestSubstring = string.substring(idx);
+// //     let allSubstrings = substrings(longestSubstring);
+// //     results = results.concat(allSubstrings);
+// //   }
+// //   return results;
+// // }
+
+// #38
+// Write a function that returns a list of palindromic substrings of a string 
+// each substring must consist of a sequence of characters taht reads the same 
+// forward and backward
+// palindromes('abcd');       // []
+// palindromes('madam');      // [ "madam", "ada" ]
+// palindromes('hello-madam-did-madam-goodbye');
+// ANSWER
+// // function substrings(string) {
+// //   result = []
+// //   for (idx = 0; idx < string.length; idx ++) {
+// //     result.push(substringArrays(string.slice(idx)))
+// //   }
+// //   return result
+// // }
+// // function substringArrays(string) {
+// //   return string.split('').map((_,idx,arr) => {
+// //     return arr.slice(0, idx+1).join('')
+// //   })
+// // }
+// // function palindromes(string) {
+// //   let subs = substrings(string)
+// //  // console.log(subs)
+// //  let result = []
+// //   subs.forEach(wordArr => {
+// //     wordArr.forEach(word => {
+// //       let reverse = word.split('').reverse().join('')
+// //       if (reverse === word && word.length > 1) {
+// //         result.push(word)
+// //       }
+// //     })
+// //   })
+// //   console.log(result)
+// //   }
+// // palindromes('abcd');       // []
+// // palindromes('madam');      // [ "madam", "ada" ]
+// // palindromes('hello-madam-did-madam-goodbye');
+
+// #39 
+// Write a function that takes an array of numbers, and returns the sum of the sums of each
+// leading subsequence for that array.  You may assume that the array always contains 
+// // at least one number
+// sumOfSums([3, 5, 2]);        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+// sumOfSums([1, 5, 7, 3]);     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+// sumOfSums([4]);              // 4
+// sumOfSums([1, 2, 3, 4, 5]);  // 35
+// ANSWER
+// // function sumOfSums(arr) {
+// //   let sumTotal = 0
+// //   for (idx = 1; idx < arr.length; idx ++) {
+// //     sumTotal += arr.slice(0, idx).reduce((accum, num) => accum + num);
+// //   }
+// //   return sumTotal
+// // }
+// // sumOfSums([3, 5, 2]);        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+// // sumOfSums([1, 5, 7, 3]);     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+// // sumOfSums([4]);              // 4
+// // sumOfSums([1, 2, 3, 4, 5]);  // 35
+
+// #40 Grocery List
+// Write a function that takes a grocery list (2D array) with each element
+// containing a fruit and a quantity, and returns a 1D array of fruits
+// in which each fruit appears a number of times equal to its quantity
+// buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]);
+// returns ["apple", "apple", "apple", "orange", "banana", "banana"]
+// ANSWER
+
+// function buyFruit(fruit2D) {
+//   let newarr = []
+//   fruit2D.forEach(subFruitList => {
+//     [fruit, num] = subFruitList
+//     while (num > 0) {
+//       newarr.push(fruit)
+//       num -= 1
+//     }
+//   })
+//   console.log(newarr)
+// }
+// buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]);
+// // returns ["apple", "apple", "apple", "orange", "banana", "banana"]
+
+// #41 Inventory Item Transactions
+// Write a function that takes two arguments, inventoryItem, and transactions, and returns
+// an array containing only the transactions for the specified inventoryItem
+// let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+//                      { id: 105, movement: 'in',  quantity: 10 },
+//                      { id: 102, movement: 'out', quantity: 17 },
+//                      { id: 101, movement: 'in',  quantity: 12 },
+//                      { id: 103, movement: 'out', quantity: 20 },
+//                      { id: 102, movement: 'out', quantity: 15 },
+//                      { id: 105, movement: 'in',  quantity: 25 },
+//                      { id: 101, movement: 'out', quantity: 18 },
+//                      { id: 102, movement: 'in',  quantity: 22 },
+//                      { id: 103, movement: 'out', quantity: 15 }, ];
+// transactionsFor(101, transactions);
+// returns
+// [ { id: 101, movement: "in",  quantity:  5 },
+//   { id: 101, movement: "in",  quantity: 12 },
+//   { id: 101, movement: "out", quantity: 18 }, ]
+// ANSWER
+// // function transactionsFor(inventoryItem, transactions) {
+// //   let query = transactions.filter(element => {
+// //     return element['id'] === inventoryItem
+// //   })
+// //   console.log(query)
+// // }
+// // transactionsFor(101, transactions);
+
+// #42 Inventory Item Availability
+// Building on the previous exercise, write a function that return true or false
+// // if the item is avaiable
+// let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+//                      { id: 105, movement: 'in',  quantity: 10 },
+//                      { id: 102, movement: 'out', quantity: 17 },
+//                      { id: 101, movement: 'in',  quantity: 12 },
+//                      { id: 103, movement: 'out', quantity: 20 },
+//                      { id: 102, movement: 'out', quantity: 15 },
+//                      { id: 105, movement: 'in',  quantity: 25 },
+//                      { id: 101, movement: 'out', quantity: 18 },
+//                      { id: 102, movement: 'in',  quantity: 22 },
+//                      { id: 103, movement: 'out', quantity: 15 }, ];
+
+// isItemAvailable(101, transactions);     // false
+// isItemAvailable(103, transactions);     // false
+// isItemAvailable(105, transactions);     // true
+// ANSWER
+// // function transactionsFor(inventoryItem, transactions) {
+// //   let query = transactions.filter(element => {
+// //     return element.id === inventoryItem
+// //   })
+// //   return query
+// // }
+// // function isItemAvailable(inventoryItem, transactions) {
+// //   let query = transactionsFor(inventoryItem, transactions)
+// //   console.log(query)
+// //   let result = 0
+// //   query.forEach(item => {
+// //     item.movement === 'in' ? result += item.quantity :
+// //       result -= item.quantity
+// //   })
+// //   if (result > 0) {
+// //     console.log(`We have ${result} units of ${inventoryItem}`)
+// //   } else {
+
+
+// //     console.log(`We're out of ${inventoryItem}`)
+// //   }
+// // }
+
+// #43 Uppercase Check
+// Write a function that takes a string argument and returns true if all 
+// of the alphabetic characters inside the string are uppercase
+// false if otherweise.
+// isUppercase('t');               // false
+// isUppercase('T');               // true
+// isUppercase('Four Score');      // false
+// isUppercase('FOUR SCORE');      // true
+// isUppercase('4SCORE!');         // true
+// isUppercase('');                // true
+// ANSWER
+// // function isUppercase(word) {
+// //   console.log(word.split('').every(char => char === char.toUpperCase())) 
+// // }
+// // OR
+// // function isUppercase(string) {
+// //   return !/[a-z]/.test(string);
+// // }
+
+// #44 Delete Vowels
+// write a function that takes an array of strings and returns an array of the 
+// same values with all vvowels removed
+// removeVowels(['abcdefghijklmnopqrstuvwxyz']);         // ["bcdfghjklmnpqrstvwxyz"]
+// removeVowels(['green', 'YELLOW', 'black', 'white']);  // ["grn", "YLLW", "blck", "wht"]
+// removeVowels(['ABC', 'AEIOU', 'XYZ']);                // ["BC", "", "XYZ"]
+// ANSWER
+// // function removeVowels(string) {
+// //   return string.map(string => string.replace(/[aeiou]/gi, ""))
+// // }
+// // OR
+// // function removeVowels(stringArray) {
+// //   return stringArray.map(string => {
+// //     let chars = string.split("");
+// //     let removedVowels = deleteVowels(chars);
+// //     return removedVowels.join("");
+// //   });
+// // }
+// // function deleteVowels(array) {
+// //   const VOWELS = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+// //   return array.map(char => {
+// //     if (VOWELS.indexOf(char) >= 0) {
+// //       return "";
+// //     } else {
+// //       return char;
+// //     }
+// //   });
+// // }
+
+// #45 Lettercase Counter
+// write a function that takes a string and returns an object containing 3 properties:
+// one representing the number of characters in the string that are lowercase
+// one rep the number of uppercase
+// one that rep characters that are neither
+// letterCaseCount('abCdef 123');  // { lowercase: 5, uppercase: 1, neither: 4 }
+// letterCaseCount('AbCd +Ef');    // { lowercase: 3, uppercase: 3, neither: 2 }
+// letterCaseCount('123');         // { lowercase: 0, uppercase: 0, neither: 3 }
+// letterCaseCount('');            // { lowercase: 0, uppercase: 0, neither: 0 }
+// ANSWER
+// // function letterCaseCount(string) {
+// //   let result = {lowercase: 0, uppercase: 0, neither: 0}
+// //   let lowercaseChars = string.match(/[a-z]/g) || [];
+// //   let uppercaseChars = string.match(/[A-Z]/g) || [];
+// //   let neitherChars = string.match(/[^a-z]/gi) || []
+// //   result = { lowercase: lowercaseChars.length,
+// //   uppercase: uppercaseChars.length,
+// //   neither: neitherChars.length
+// // }
+// // console.log(result)
+// // }
+
+// #46 Capitalize Words
+// Write a function that takes a string as an argument, and returns 
+// that string with the first character of every word capitalized and 
+// all subsequent characters in lowercase.
+// wordCap('four score and seven');       // "Four Score And Seven"
+// wordCap('the javaScript language');    // "The Javascript Language"
+// wordCap('this is a "quoted" word');    // 'This Is A "quoted" Word'
+// ANSWER
+// // function wordCap(string) {
+// //   newword = string.split(' ').map(char => char[0].toUpperCase() + char.slice(1).toLowerCase()).join(' ')
+// //   console.log(newword)
+// // }
+
+// #47 Swap Case
+// Write a function that takes a string as an argument, and returns that string with every lowercase 
+// letter changed to uppercase and every uppercase letter changed to lowercase. Leave all other characters unchanged.
+// swapCase('CamelCase');              // "cAMELcASE"
+// swapCase('Tonight on XYZ-TV');      // "tONIGHT ON xyz-tv"
+// ANSWER
+// // function swapCase(string) {
+// //   let news = string.split('').map(char => {
+// //     return char.toUpperCase() === char ? char.toLowerCase() : char.toUpperCase()  
+// //   }).join('');
+// //   console.log(news)
+// // }
+// // OR
+// // function swapCase(string) {
+// //   let news = string.split('').map(char => {
+// //     if(/[a-z]/.test(char)) {
+// //       return char.toUpperCase
+// //     } else if (/[A-Z]/.test(char)) {
+// //       return char.toLowerCase()
+// //     } else {
+// //       return char
+// //     }
+// //   })
+// //   .join("")
+// //   }
+
+// #48 Staggered Caps
+// Write a function that takes a string as an argument, and returns that string with a staggered capitalization scheme. 
+// Every other character, starting from the first, should be capitalized and should be followed by a lowercase or non-alphabetic 
+// character. Non-alphabetic characters should not be changed, but should be counted as 
+// characters for determining when to switch between upper and lower case.
+// staggeredCase('I Love Launch School!');        // "I LoVe lAuNcH ScHoOl!"
+// staggeredCase('ALL_CAPS');                     // "AlL_CaPs"
+// staggeredCase('ignore 77 the 444 numbers');    // "IgNoRe 77 ThE 444 NuMbErS"
+// ANSWER
+// // function staggeredCase(string) {
+// //   let result = string.split('').map((char, idx) => {
+// //     return idx % 2 === 0 ? char.toUpperCase() : 
+// //     char.toLowerCase()
+// //   }).join('')
+// //   console.log(result)
+// // }
+
+// #49 Staggered Caps Part 2
+// Modify the function from the previous exercise so it ignores non-alphabetic 
+// characters when determining whether it should uppercase or lowercase each letter. 
+// The non-alphabetic characters should still be included in the return value; they just don't count when toggling the desired case.
+// // function staggeredCase(string) {
+// //   let needUpper = true;
+// //   return string
+// //     .split("")
+// //     .map(function(char) {
+// //       if (char.match(/[a-z]/i)) {
+// //         let newChar;
+// //         if (needUpper) {
+// //           newChar = char.toUpperCase();
+// //         } else {
+// //           newChar = char.toLowerCase();
+// //         }
+
+// //         needUpper = !needUpper;
+// //         return newChar;
+// //       } else {
+// //         return char;
+// //       }
+// //     })
+// //     .join("");
+// // }
+// // OR
+// // function staggeredCase(string) {
+// //   let needsUpperCase = true;
+// //   let result = '';
+// //   for (let chr of string) {
+// //     if (/[a-z]/i.test(chr)) {
+// //       chr = needsUpperCase ? chr.toUpperCase() : chr.toLowerCase();
+// //       needsUpperCase = !needsUpperCase;
+// //     }
+// //     result += chr;
+// //   }
+// //   return result;
+// // }
+// #50 How long are you
+// write a function that takes a string and returns an array with "word + word.length"
+// wordLengths('cow sheep chicken');
+// // ["cow 3", "sheep 5", "chicken 7"]
+// wordLengths('baseball hot dogs and apple pie');
+// // ["baseball 8", "hot 3", "dogs 4", "and 3", "apple 5", "pie 3"]
+// wordLengths("It ain't easy, is it?");
+// // ["It 2", "ain't 5", "easy, 5", "is 2", "it? 3"]
+// wordLengths('Supercalifragilisticexpialidocious');
+// // ["Supercalifragilisticexpialidocious 34"]
+// wordLengths('');      // []
+// wordLengths();        // []
+// ANSWER
+
+//split string, return newArray, forEach word, push word + space + word length
+// // function wordLengths(string) {
+// //   let result = []
+// //   if (arguments.length === 0 || string.length === 0) {
+// //     return result = []
+// //   }
+// //   string.split(' ').forEach(char => {
+// //     let wordlength = " " + char.length
+// //     result.push(char.concat(wordlength))
+// //   })
+// //   console.log(result)
+// // }
+// // OR
+// // if (!string) return []
+
+// #51 Search Word (Part 1)
+// Write a function that takes a word and a string of text as arguments, 
+// and returns an integer representing the number of times the word appears in the text.
+// const text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
+// searchWord('sed', text);      // 3
+// ANSWER
+// // function searchWord(word, text) {
+// //   let regex = new RegExp(word, 'gi') 
+// //   let matches = text.match(regex)
+// //   console.log(matches.length)
+// // }
+
+// #51a Can you refactor it so it'll only match whole words?
+// const text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
+// searchWord('sed', text);      // 3
+// ANSWER
+// function searchWord(word, text) {
+//   let regex = new RegExp(`\\b${word}\\b`,'gi')
+//   let matches = text.match(regex)
+//   console.log(matches.length)
+// }
+
+// #52 Search Word (Part 2)
+// Write a function that highlights a keyword with ('**') on each side and change each letter of 
+// the word to uppercase
+// const text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
+// searchWord('sed', text);
+// ANSWER
+// // function searchWord(word, text) {
+// //   let regex = new RegExp(word, 'gi')
+// //   let newText = text.replace(regex, "**SED**" )
+// //   console.log(newText)
+// // }
+
+// returns
+// "**SED** ut perspiciatis unde omnis iste natus error sit 
+
+// #53 Rotation
+// Write a function that rotates an array by moving the first element to the end 
+// of the array.  Don't modify the original.
+// If the input is not an array, return undefined
+// If input is an empty array, return an empty array
+
+function rotateArray(array){
+  let copiedArray = []
+  if (!Array.isArray(array)) {
+    return undefined
+  } else if (array.length === 0) {
+    return []
+  } else {
+    copiedArray = array.slice()
+    let endNum = copiedArray.shift()
+    copiedArray.push(endNum)
+    console.log(copiedArray)
+  }
+  console.log(array)
+}
+  ``
+
+rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
+rotateArray(['a', 'b', 'c']);          // ["b", "c", "a"]
+rotateArray(['a']);                    // ["a"]
+rotateArray([1, 'a', 3, 'c']);         // ["a", 3, "c", 1]
+rotateArray([{ a: 2 }, [1, 2], 3]);    // [[1, 2], 3, { a: 2 }]
+rotateArray([]);                       // []
+
+// return `undefined` if the argument is not an array
+rotateArray();                         // undefined
+rotateArray(1);                        // undefined
+
+
+// the input array is not mutated
+let array = [1, 2, 3, 4];
+rotateArray(array);                    // [2, 3, 4, 1]
+array;                                 // [1, 2, 3, 4]

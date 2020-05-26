@@ -44,7 +44,7 @@ function produceFinder(fruitSelection, desiredType) {
       selectedProduce[fruits] = fruitSelection[fruits]
     }
   }
-  return selectedProduce.length
+  return selectedProduce
 }
 let produce = {
   apple: 'Fruit',
