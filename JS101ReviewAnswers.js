@@ -978,36 +978,369 @@
 // of the array.  Don't modify the original.
 // If the input is not an array, return undefined
 // If input is an empty array, return an empty array
-
-function rotateArray(array){
-  let copiedArray = []
-  if (!Array.isArray(array)) {
-    return undefined
-  } else if (array.length === 0) {
-    return []
-  } else {
-    copiedArray = array.slice()
-    let endNum = copiedArray.shift()
-    copiedArray.push(endNum)
-    console.log(copiedArray)
-  }
-  console.log(array)
-}
-  ``
-
-rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
-rotateArray(['a', 'b', 'c']);          // ["b", "c", "a"]
-rotateArray(['a']);                    // ["a"]
-rotateArray([1, 'a', 3, 'c']);         // ["a", 3, "c", 1]
-rotateArray([{ a: 2 }, [1, 2], 3]);    // [[1, 2], 3, { a: 2 }]
-rotateArray([]);                       // []
-
+// rotateArray([7, 3, 5, 2, 9, 1]);       // [3, 5, 2, 9, 1, 7]
+// rotateArray(['a', 'b', 'c']);          // ["b", "c", "a"]
+// rotateArray(['a']);                    // ["a"]
+// rotateArray([1, 'a', 3, 'c']);         // ["a", 3, "c", 1]
+// rotateArray([{ a: 2 }, [1, 2], 3]);    // [[1, 2], 3, { a: 2 }]
+// rotateArray([]);                       // []
 // return `undefined` if the argument is not an array
-rotateArray();                         // undefined
-rotateArray(1);                        // undefined
-
-
+// rotateArray();                         // undefined
+// rotateArray(1);                        // undefined
 // the input array is not mutated
-let array = [1, 2, 3, 4];
-rotateArray(array);                    // [2, 3, 4, 1]
-array;                                 // [1, 2, 3, 4]
+// let array = [1, 2, 3, 4];
+// rotateArray(array);                    // [2, 3, 4, 1]
+// array;                                 // [1, 2, 3, 4]
+// ANSWER
+// // function rotateArray(array){
+// //   let copiedArray = []
+// //   if (!Array.isArray(array)) {
+// //     return undefined
+// //   } else if (array.length === 0) {
+// //     return []
+// //   } else {
+// //     copiedArray = array.slice()
+// //     let endNum = copiedArray.shift()
+// //     copiedArray.push(endNum)
+// //     console.log(copiedArray)
+// //   }
+// //   console.log(array)
+// // }
+// //   ``
+
+// #54 Rotation (Part 2)
+// Write a function that rotates the right-most digits of a number specified by an argument
+// rotateRightmostDigits(735291, 1);      // 735291
+// rotateRightmostDigits(735291, 2);      // 735219
+// rotateRightmostDigits(735291, 3);      // 735912
+// rotateRightmostDigits(735291, 4);      // 732915
+// rotateRightmostDigits(735291, 5);      // 752913
+// rotateRightmostDigits(735291, 6);      // 352917
+// ANSWER
+// // function rotateRightmostDigits(num, count) {
+// //   if (count === 1){
+// //     console.log(num)
+// //     return num
+// //   }
+// //   let numArry = String(num).split('')
+// //   let numArrayCopied = numArry.slice('')
+// //   numIndex = numArry.length - count
+// //   let val = numArry.splice(numIndex, 1)
+// //   numArry.push(val[0])
+// //   console.log(numArry.join(''))
+// // }
+// // OR
+// // function rotateRightmostDigits(num, count) {
+// //   let number = String(num)
+// //   let firstPart = number.slice(0,number.length - count)
+// //   let secondPart = number.slice(number.length - count)
+// //   let result = firstPart + rotateString(secondPart)
+
+// //   return Number(result)
+// // }
+
+// // function rotateString(string) {
+// //   return string.slice(1) + slice[0]
+// // }
+// #55 Rotation (Part 3)
+// Find the maximum rotation for numbers
+// rotate the 1st num to the right, then the 2nd, etc
+// use the previous function
+// // function rotateRightmostDigits(num, count) {
+// //     let number = String(num)
+// //     let firstPart = number.slice(0,number.length - count)
+// //     let secondPart = number.slice(number.length - count)
+// //     let result = firstPart + rotateString(secondPart)
+  
+// //     return Number(result)
+// //   }
+// // function rotateString(string) {
+// //   return string.slice(1) + string[0]
+// // }
+  
+// // function maxRotation(number) {
+// //   let maxRotation = String(number).length
+// //   while (maxRotation > 0) {
+// //     number = (rotateRightmostDigits(number, maxRotation))
+// //     maxRotation -= 1
+// //   }
+// //   console.log(number)
+// // }
+// // OR
+// // function maxRotation (num) {
+// //   let arr = String(num).split('');
+// //   arr.forEach((_,idx) => arr.push(arr.splice(idx,1)))
+// //   return arr.join('')
+// // }
+
+// #56 Stack Machine Interpretation
+// a stack is a list of values that grows and shrinks dynamically.  It maybe implemented as
+// an Array that uses two array methods: Array.prototype.push and Array.prototype.pop.
+//minilang('PRINT');
+// // 0
+//minilang('5 PUSH 3 MULT PRINT');
+// // 15
+//minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// // 5
+// // 3
+// // 8
+// minilang('5 PUSH POP PRINT');
+// // 5
+// minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// // 5
+// // 10
+// // 4
+// // 7
+// minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// // 6
+// minilang('4 PUSH PUSH 7 MOD MULT PRINT');
+// // 12
+// minilang('-3 PUSH 5 SUB PRINT');
+// // 8
+// minilang('6 PUSH');
+// ANSWER
+// // function minilang(command) {
+// //   let stack = []
+// //   let register = 0
+// //   let store = 0
+// //   command.split(' ').forEach(element => {
+// //     // if (Number.isInteger(Number(element))){
+// //     //   register = Number(element)
+// //     // };
+// //     switch (element) {
+// //       case 'PRINT':
+// //         console.log(register);
+// //         break;
+// //       case 'PUSH':
+// //         stack.push(register);
+// //         break;
+// //       case 'MULT':
+// //         register = stack.pop() * register;
+// //         break;
+// //       case 'MOD':
+// //         register = Math.floor(register % stack.pop());
+// //         break;
+// //       case 'ADD':
+// //         register = stack.pop() + register;
+// //         break;
+// //       case 'SUB':
+// //         register = register - stack.pop();
+// //         break;
+// //       case 'DIV':
+// //         register = Math.floor(register/stack.pop());
+// //       case 'POP':
+// //         register = stack.pop()
+// //       default:
+// //         register = Number(element)
+// //     }
+// //   });
+// //   //console.log(register)
+// // }
+
+// #57 Word to Digit
+// Write a function that takes a sentence as an argument,
+// and returns that string with every occurrence of a "number word" -
+// 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' 
+// and converts to corresponding digit
+// wordToDigit('Please call me at five five five one two three four. Thanks.');
+// // "Please call me at 5 5 5 1 2 3 4. Thanks."
+// ANSWER
+// // const WORDS = ['zero','one', 'two', 'three','four','five','six','seven','eight','nine']
+// // function wordToDigit(string) {
+// //   let arr = []
+// //   string.split(' ').forEach(element => {
+// //     let regex = new RegExp('\\b' + element + '\\b', 'g')
+// //     if (WORDS.includes(regex)) {
+// //       arr.push(WORDS.indexOf(regex))
+// //     } else {
+// //       arr.push(element)
+// //     }
+// //     newstring = arr.join(' ')
+// //   })
+// //   console.log(newstring)
+// // }
+// // wordToDigit('Please call me at five five five one two three four. Thanks.');
+// // // "Please call me at 5 5 5 1 2 3 4. Thanks."
+
+// #58 Fibonnaci Numbers (Recursion)
+// The Fibonacci series is a sequence of numbers in which 
+// each number is the sum of the previous two numbers. The first two Fibonacci numbers are 
+// 1 and 1. The third number is 1 + 1 = 2, the fourth is 1 + 2 = 3, the fifth is 2 + 3 = 5, and so 
+// on. In mathematical terms, this can be represented as:
+// ANSWER
+// // function fibonacci(num) {
+// //   if (num <= 2){
+// //     return 1;
+// //   }
+// //   let one = 1 
+// //   let two = 1 
+// //   let idx = 3
+// //   let fib = 2
+// //   while (idx <= num) {
+// //     fib = one + two
+// //     one = two
+// //     two = fib
+// //     idx += 1
+// //   }
+// //   console.log(fib)
+// // }
+// // fibonacci(20);       // 6765
+// // fibonacci(50);       // 12586269025
+// // fibonacci(75);       // 2111485077978050
+
+// #59 Lettercase Percentage Ratio
+// Write a function that takes a string, and returns an object containing the following three properties:
+// the percentage of characters in the string that are lowercase letters
+// the percentage of characters that are uppercase letters
+// the percentage of characters that are neither
+// letterPercentages('abCdef 123');
+// // { lowercase: "50.00", uppercase: "10.00", neither: "40.00" }
+// letterPercentages('AbCd +Ef');
+// // { lowercase: "37.50", uppercase: "37.50", neither: "25.00" }
+// letterPercentages('123');
+// ANSWER
+// // function letterPercentages(string) {
+// //   let obj1 = {lowercase: 0, uppercase: 0, neither: 0}
+// //   let regex = RegExp(/[a-z]/g)
+// //   let regex1 = RegExp(/[A-Z]/g)
+// //   let regex3 = RegExp(/[^a-z]/gi)
+// //   if (string.length === string.match(regex3).length) {
+// //     obj1.uppercase = "0.0"
+// //     obj1.lowercase = "0.0"
+// //     obj1.neither = "100.0"
+// //   } else {
+// //     obj1.uppercase = ((string.match(regex).length / string.length) * 100).toFixed(2)
+// //     obj1.lowercase = ((string.match(regex1).length / string.length) * 100).toFixed(2)
+// //     obj1.neither = ((string.match(regex3).length / string.length) * 100).toFixed(2)
+// //   }
+// // console.log(obj1)
+// // }
+
+// #60
+// Write a function that takes the lengths of the three sides of a 
+// triangle as arguments, and returns one of the following four strings 
+// representing the triangle's classification: 'equilateral', 'isosceles', 'scalene', or 'invalid'.
+// triangle(3, 3, 3);        // "equilateral"
+// triangle(3, 3, 1.5);      // "isosceles"
+// triangle(3, 4, 5);        // "scalene"
+// triangle(0, 3, 3);        // "invalid"
+// triangle(3, 1, 1);        // "invalid"
+// ANSWER
+// // function triangle(v1, v2, v3) {
+// //   let result = ''
+// //   let triangleArray = determineSide(v1,v2,v3)
+// //   let [smallestSide, largestSide, otherSide] = triangleArray
+// //   //console.log(smallestSide, largestSide, otherSide[0])
+// //   if ((smallestSide + otherSide < largestSide) || (triangleArray.includes(0))) {
+// //     result = "invalid"
+// //   } else if (v1 === v2 && v1 ===v3) {
+// //     result = "Equilateral"
+// //   } else if (v1 === v2 || v1 === v3 || v2 === v3) {
+// //     result = "Isosceles"
+// //   } else {
+// //     result = 'Scalene'
+// //   }
+// //   // if (v1 === 0 || v2 === 0 || v3 ===0) {
+// //   //   result = 'invalid'
+// //   // } else if {
+
+// //   // }
+// //   console.log(result)
+// // }
+// // function determineSide(v1,v2,v3) {
+// //   let triangleArray = [v1, v2, v3];
+// //   let smallestSide = Math.min(...triangleArray);
+// //   triangleArray.splice(triangleArray.indexOf(smallestSide), 1)
+// //   let largestSide = Math.max(...triangleArray);
+// //   triangleArray.splice(triangleArray.indexOf(largestSide), 1)
+// //   let otherSide = triangleArray[0]
+// //   return [smallestSide, largestSide, otherSide]
+// // }
+
+// #61 Tri-Angles
+// Right: One angle is a right angle (exactly 90 degrees).
+// Acute: All three angles are less than 90 degrees.
+// Obtuse: One angle is greater than 90 degrees.
+// sum of angles must be 180 & every angle must be greater than 0
+// return whether the function is right, acute, obtuse or invalid
+// triangle(60, 70, 50);       // "acute"
+// triangle(30, 90, 60);       // "right"
+// triangle(120, 50, 10);      // "obtuse"
+// triangle(0, 90, 90);        // "invalid"
+// triangle(50, 50, 50);       // "invalid"
+// ANSWER
+// // function triangle (v1, v2, v3) {
+// //   let result = ''
+// //   if (!isValid(v1, v2, v3)) {
+// //     result = 'invalid'
+// //   } else if ([v1,v2,v3].includes(90)) {
+// //     result = 'right'
+// //   } else if (v1 < 90 && v2 < 90 && v3 < 90) {
+// //     result = 'acute'
+// //   } else {
+// //     result = 'obtuse'
+// //   }
+// //   console.log(result)
+// // }
+// // function isValid(v1, v2, v3){
+// //   if(v1 + v2 + v3 !== 180) {
+// //     return false
+// //   } else if ([v1,v2,v3].includes(0)) {
+// //     return false
+// //   }
+// //   return true
+// // }
+
+// #62 Unlucky Days
+// Write a function that determines the number of Friday the 13th's for that year
+// ANSWER
+// function fridayThe13ths(year) {
+//   let thirteenths = [];
+
+//   for (let month = 0; month < 12; month += 1) {
+//     thirteenths.push(new Date(year, month, 13));
+//   }
+
+//   return thirteenths.reduce((count, day) => {
+//     return day.getDay() === 5 ? (count + 1) : count;
+//   }, 0);
+// }
+
+// #64 Sum Squared
+// Write a function that computes the difference between 
+// the square of the sum of the first count positive integers
+// sumSquareDifference(3);      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+// sumSquareDifference(10);     // 2640
+// sumSquareDifference(1);      // 0
+// sumSquareDifference(100);    // 25164150
+// ANSWER
+// // function sumSquareDifference(num) {
+// //   let sum = []
+// //   let square = []
+// //   for (i = 1; i <= num; i ++) {
+// //     sum.push(i)
+// //     square.push(i**2)
+// //   }
+// //   let first = sum.reduce((accum, idx) => accum + idx)
+// //   let seco = square.reduce((accum, idx) => accum + idx)
+// //   console.log((first**2) - seco)
+// // }
+
+// #65 Longest Sentence
+// write a program that prints the longest sentence
+function longestSentence(longText) {
+  let regex = new RegExp(/[!.?]/,'g')
+  let arr = longText.split(regex)
+  let longest = arr.reduce((sum, element) => {
+    if (element.length > sum) {
+      sum = element
+    } return sum 
+  },arr[0])
+  console.log(longest)
+  console.log(`The longest sentence has ${longest.split(" ").length}`)
+
+}
+longestSentence("Where do you think you're going? What's up, Doc?");
+// Where do you think you're going?
+//
+// The longest sentence has 6 words.
