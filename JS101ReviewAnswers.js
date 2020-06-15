@@ -920,7 +920,6 @@
 // wordLengths('');      // []
 // wordLengths();        // []
 // ANSWER
-
 //split string, return newArray, forEach word, push word + space + word length
 // // function wordLengths(string) {
 // //   let result = []
