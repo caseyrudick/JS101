@@ -49,20 +49,20 @@ function dealPlayerCards(score) {
   if (score['PlayerCards'].length === 0) {
     score['PlayerCards'] = []
   }
-
-  if (inspectAceValue(player = 'Player',score)) {
-    score['PlayerCards'].push('1')
+  card = generateRandomCard(score)
+  if (inspectAceValue(player = 'Player',score, card)) {
+    score['PlayerCards'].push(['Ace',1])
   } else {
-    card = generateRandomCard(score)
     score['PlayerCards'].push(card[0])
   }
+  console.log(score.PlayerCards)
   return score
 }
 
 function dealComputerCards(score) {
   if (score['ComputerCards'].length === 0){
     score['ComputerCards'] = [];
-  }
+  } 
   if (inspectAceValue(player = 'Computer', score)) {
     score['ComputerCards'].push('1')
   } else {
@@ -71,22 +71,6 @@ function dealComputerCards(score) {
   }
   return score
 }
-
-// function calculateScores(cards) {
-//   let vals = Object.values(cards)
-//   result = [].concat(...vals).filter(num => {
-//     return Number.isInteger(num)
-//  }).reduce((sum, idx) => {return sum + idx},0)
-//   return result
-// }
-// function displayScores(score) {
-//   score.PlayerScore = calculateScores(score.PlayerCards);
-//   score.ComputerScore = calculateScores(score.ComputerCards)
-//   topComputerCard = score['ComputerCards'][1]
-//   prompt(`You have: ${score.PlayerScore}.  Computer has ${topComputerCard[1]} of ${topComputerCard[0]}`)
-//   return score
-// }
-
 
 
 function calculateScore(player, score) {
@@ -97,13 +81,15 @@ function calculateScore(player, score) {
   let vals = Object.values(cards)
   result = [].concat(...vals).filter(num => {
     return Number.isInteger(num)
-  }).reduce((sum, idx) => {return sum + idx},0)
+  }).map(num => {
+      return num > 10 ? 10 : num
+    }).reduce((sum, idx) => {return sum + idx},0)
   return result
-}
+  }
 
-function inspectAceValue(player, score) {
+function inspectAceValue(player, score, card) {
   return ((calculateScore(player,score) > 10) && 
-    generateRandomCard(score)[0] === 14)
+    card === 14)
 }
 
 function displayPlayerScores(score) {
@@ -112,7 +98,7 @@ function displayPlayerScores(score) {
   return score
 }
 function displayComputerScores(score) {
-  score.PlayerScore = calculateScore('Computer', score)
+  score.ComputerScore = calculateScore('Computer', score)
   prompt(`Computer has: ${score.ComputerScore}.`)
   return score
 }
@@ -128,51 +114,69 @@ function computerHitOrStay(score) {
     dealComputerCards(score)
     displayComputerScores(score)
   }
-  if 
 }
 
-// function hitOrStayHandler(answer) {
-//   while (true) {
-//     prompt ('=>Please enter either "h" or "s": ')
-//     answer = RLSYNC.question()
-//     if (['h','s'].includes(answer.toLowerCase())) break;
-//   }bra
-//   return answer
-// }
+function hitOrStayHandler() {
+  while (true) {
+    prompt ('=>Please enter either "h" or "s": ')
+    answer = RLSYNC.question()
+    if (['h','s'].includes(answer.toLowerCase())) break;
+  }
+  return answer
+}
 
 function playerHitOrStay(score) {
-  prompt(`=>Do you want to hit or stay?`)
-  let answer = RLSYNC.question() 
-  if (answer === 'h') {
+  while (true) {
+    prompt(`=>Do you want to hit or stay?`)
+    let answer = RLSYNC.question() 
+    // if (answer = 'score') {
+    //   console.log(score)
+    // }
+    if (!['score','h','s'].includes(answer.toLowerCase())) {
+      answer = hitOrStayHandler()
+    }
+    else if (answer === 'h') {
       dealPlayerCards(score)
       displayPlayerScores(score)
+      if (bust('Player', score)) {
+        console.log('You lose!')
+        break;
+      }
     } else {
     prompt('=>You chose to stay')
-    displayPlayerScores(score)
-    return false
+    displayPlayerScores(score) 
+    break;
+    }
   }
 }
+
+
 
 let score = initiateScore()
 score.Deck = initiateCards()
 dealFirstRound(score)
 displayPlayerScores(score)
+displayComputerScores(score)
 while (true) {
-  while (true) {
-    playerHitOrStay(score)
-    if (bust('Player', score)) {
-      console.log('you lose!')
-      break;
-    }
+  playerHitOrStay(score)
+  computerHitOrStay(score)
   prompt('Do you want to play again?')
   let answer = RLSYNC.question()
+  if (answer === 'score') {
+    console.log(score)
+  }
   if (answer.toLowerCase() !== 'y') break;
-}
+  score = initiateScore()
+  score.Deck = initiateCards()
+  dealFirstRound(score)
+  displayPlayerScores(score)
 
-  // if (calculateScore('Player', score) > 21) {
-  //   console.log('GAME OVER');
-  //   break;
-  // } 
+
+  if (calculateScore('Player', score) > 21) {
+    console.log('GAME OVER');
+    break;
+  } 
+
 }
 
 
